@@ -1,0 +1,26 @@
+{{define "title"}}
+calendar
+{{end}}
+{{define "body"}}
+<div class="container">
+  <div class="jumbotron" id="jumb">
+    <h1>Calendar</h1>
+    <pre id="jolien">{{println .Ar.Gg.Res}}</pre>
+  </div>
+  {{range $i,$e := .Ar.Ti}}
+  <div class="form-group">
+    <label for={{$e}}>{{$e}}</label>
+    <input type="number" class="form-control" id={{$e}} name={{$e}}>
+  </div>
+  {{end}}
+  {{range $i,$e := .Ar.Ch}}
+  <div class="form-group">
+    <label for={{$e}}>{{$e}}</label>
+    <input type="text" class="form-control" id={{$e}} name={{$e}}>
+  </div>
+  {{end}}
+  <a href="#jumb"><button type="submit" id="mo" class="btn btn-default">Submit</button></a>
+</div>
+</div>
+<script type="text/javascript" src="/cal.js"></script>
+{{end}}

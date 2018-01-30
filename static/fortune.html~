@@ -1,0 +1,46 @@
+{{define "title"}}
+fortune
+{{end}}
+{{define "body"}}
+<div class="container">
+  <div class="jumbotron" id="jumb">
+    <h1>Fortune</h1>
+    <blockquote style="border: 0px;" cite="https://fr.wikipedia.org/wiki/Fortune_(logiciel)">
+      <p id="fr">{{println .Ar.Fortune.Res}}</p>
+      <footer><a href="https://fr.wikipedia.org/wiki/Fortune_(logiciel)">All About fortune</a></footer>
+    </blockquote>
+  </div>
+  <p>This is fortune citation.</p>
+  <div  id="cache">
+    <noscript><form method="post" action="/cowsay/"></noscript>
+    <div class="checkbox" id="checkMe">
+      {{range $index, $element := .Ar.Load}}
+      <label><input type="checkbox" name={{$element}}> {{$element}}</label>
+      {{ end }}
+    </div>
+    {{range $i,$e := .Ar.M}}
+    <div class="form-group">
+      <label for={{$e}}>{{$e}}</label>
+      <input type="text" class="form-control" id={{$e}} name={{$e}}>
+    </div>
+    {{end}}
+    <div class="form-group">
+      <label for="sea1">Select list (select one):</label>
+      <select class="form-control" id="sea1">
+	<option></option>
+	{{range $index, $element := .Ar.Input}}
+	<option>{{$element}}</option>
+	{{ end }}
+      </select>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="sea2">choose %</label>
+      <input class="form-control" type="text" id="sea2">
+    </div>
+    <a href="#jumb"><button type="submit" id="mo" class="btn btn-default">Submit</button>
+    <noscript></form></noscript>
+    <script type="text/javascript" src="/chat.js"></script>
+  </div>
+
+{{end}}

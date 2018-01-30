@@ -1,0 +1,164 @@
+{{define "title"}}
+cowsay
+{{end}}
+{{define "body"}}
+<div class="container">
+<div class="jumbotron" id="jumb">
+  <h1>Cow Say</h1>
+  <div class="form-group" style="background-color: #f5f5f5">
+   <pre id="comment" class="comment"style=";border:none;">{{println .Ar.Gg.Res}}</pre>
+  </div>
+  <!--canvas  crossOrigin="Anonymous" id="canvas" style="border:2px solid black;" width="200" height="200">
+      </canvas-->
+  <div class="form-group form-inline">
+    <label for="col1">Select list:</label>
+    <select class="form-control" id="col1">
+      
+    </select>
+    <label for="col2">Select list:</label>
+    <select class="form-control" id="col2">
+      
+    </select>
+    </div>
+    
+</div>
+<p>This is cow  citation.</p>
+<div id="cowcow">
+  <noscript><form method="post" action="/cowsay/"></noscript>
+  <div class="checkbox" id="checkMe">
+    {{range $index, $element := .Ar.Load}}
+    <label><input type="checkbox" name={{$element}}> {{$element}}</label>
+    {{ end }}
+  </div>
+<div class="checkbox" id="checkMoi">
+  {{range $index, $element := .Ar.Style}}
+  <label><input type="checkbox" name={{$element}}> {{$element}}</label>
+  {{ end }}
+</div>
+<div class="form-group">
+  <label for="sel1">Select list (select one):</label>
+  <select class="form-control" id="sel1">
+    {{range $index, $element := .Ar.Type}}
+    <option>{{$element}}</option>
+    {{ end }}
+  </select>
+</div>
+<div class="form-group">
+  <label for="sel1">Select list (select one):</label>
+  <select class="form-control" id="sel2">
+    <option></option>
+      {{range $index, $element := .Ar.Animal}}
+      <option>{{$element}}</option>
+      {{ end }}
+    </select>
+</div>
+{{range $i,$e := .Ar.Sens}}
+<div class="form-group">
+  <label for={{$e}}>{{$e}}</label>
+  <input type="text" class="form-control" id={{$e}} name={{$e}}>
+</div>
+{{end}}
+{{range $i,$e := .Ar.W}}
+<div class="form-group">
+  <label for={{$e}}>{{$e}}</label>
+  <input type="number" class="form-control" id={{$e}} name={{$e}}>
+</div>
+{{end}}
+<div class="form-group">
+  <label for="text">Speak to Cow:</label>
+  <textarea type="text" class="form-control" id="sea1"></textarea>
+</div>
+<a href="#jumb"><button type="submit" id="mo" class="btn btn-default">Submit</button></a>
+<noscript></form></noscript>
+</div>
+</div>
+<script type="text/javascript" src="/cow.js"></script>
+<script type="text/javascript" src="/html2canvas/dist/html2canvas.js"></script>
+<script type="text/javascript" src="/toImg.js"></script>
+<script type="text/javascript">
+
+  function getColor(){
+      return ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
+  }
+  
+  
+  $(document).ready(function(){
+  var colo = getColor();
+  $.each(colo, function (i, item) {
+  $('#col1').append($('<option>', {
+    value: item,
+    text : item
+    }));
+    });
+    $.each(colo, function (i, item) {
+    $('#col2').append($('<option>', {
+    value: item,
+    text : item
+    }));
+    });
+    $('#col1').on('change', function (e) {
+    $("#comment").css('color', this.value); 
+    });
+    $('#col2').on('change', function (e) {
+    $("#comment").css('background-color', this.value);
+    });
+    
+    });
+</script>
+<script type="text/javascript">
+  function lililo(){
+  var bb = document.getElementById('comment');
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+  w = $(bb).width();
+  h = $(bb).height();
+  
+  canvas.height = h;
+    canvas.width = w;
+  var data = '<svg xmlns="http://www.w3.org/2000/svg" width=\"'+w+'\" height=\"'+h+'\">' +
+    '<foreignObject width=\"'+w+'\" height=\"'+h+'\">' +
+      '<pre xmlns="http://www.w3.org/1999/xhtml" style="">' +
+	'{{println .Ar.Gg.Res}}'+
+	'</pre>' +
+      '</foreignObject>' +
+    '</svg>';
+  var DOMURL = window.URL || window.webkitURL || window;
+  var img = new Image();
+  img.setAttribute('crossOrigin', 'anonymous');
+  img.crossOrigin = "Anonymous";
+  var svg = new Blob([data], {type: 'image/svg+xml'});
+  var url = DOMURL.createObjectURL(svg);
+
+  img.onload = function() {
+  ctx.drawImage(img, 0, 0);
+  DOMURL.revokeObjectURL(url);
+  }
+  img.src = url;
+  html2canvas(document.getElementById("comment")).then(function(canvas) {
+  document.getElementById("copyDiv").appendChild(canvas);
+  });
+  }
+  const entrée = document.getElementById('comment');
+  const sortie = document.getElementById('copyDiv');
+
+  function capture(e) {
+  html2canvas(entrée).then(function(canvas) {
+  sortie.src = canvas.toDataURL();
+  });
+  }
+  document.getElementById('button').addEventListener('click', capture);
+  function displayMe(a){
+  var tab = [$("#zzz"),$("#footer"),$("#fluid"),$("nav"),$("#cowcow"),$("h1"),$("p")];
+  $.each(tab, function() {
+  this.hide()
+  });
+  }
+  function mer(){
+  var c=document.getElementById("canvas");
+  var d=c.toDataURL("image/png");
+  var w=window.open('about:blank','image from canvas');
+  w.document.write("<img src='"+d+"' alt='from canvas'/>");
+  }
+</script>
+{{end}}
+  

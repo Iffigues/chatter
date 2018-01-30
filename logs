@@ -1,0 +1,31 @@
+
+dial tcp 127.0.0.1:3306: getsockopt: connection refused
+dial tcp 127.0.0.1:3306: getsockopt: connection refused
+dial tcp 127.0.0.1:3306: getsockopt: connection refused
+dial tcp 127.0.0.1:3306: getsockopt: connection refused
+listen tcp :9000: bind: address already in use
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+exit status 1
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeexit status 1
+eeeeexit status 1
+eeeeexit status 1
+eeeeexit status 1
+eeeeeeeeexit status 1
+json: cannot unmarshal array into Go value of type main.Search
+json: cannot unmarshal array into Go value of type main.Search
+json: cannot unmarshal array into Go value of type main.Search
+json: cannot unmarshal array into Go value of type main.Search
+json: cannot unmarshal array into Go value of type main.Search
+eeeeexit status 1
+eeeeexit status 1
+eeeeexit status 1
+eeeeexit status 1

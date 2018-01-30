@@ -1,0 +1,48 @@
+*{{define "title"}}
+toilet
+{{end}}
+{{define "body"}}
+<div class="container-fluid" style="width:100%;">
+    <div class="jumbotron" id="jumb">
+    <h1>all need toilet</h1>
+    <div style="font-family: monospace, fixed; font-weight: bold;" id="jolie">
+      {{.Ar.Gg.Res}}    
+      </div>
+  </div>
+  <noscript><form></noscript>
+  <div class="checkbox" id="checkMe">
+    {{range $index, $element := .Ar.Checkbox}}
+    <label><input type="checkbox" name={{$element}}> {{$element}}</label>
+    {{ end }}
+  </div>
+  <div class="checkbox" id="sel1">
+    {{range $index, $element := .Ar.Type}}
+    <label><input type="checkbox" name={{$element}}> {{$element}}</label>
+    {{ end }}
+  </div>
+  
+  {{range $i,$e := .Ar.W}}
+  <div class="form-group">
+    <label for={{$e}}>{{$e}}</label>
+    <input type="number" class="form-control" id={{$e}} name={{$e}}>
+  </div>
+  {{end}}
+  <div class="form-group">
+    <label for="sel2">Select list (select one):</label>
+    <select class="form-control" id="sel2">
+      <option></option>
+      {{range $index, $element := .Ar.F}}
+      <option>{{$element}}</option>
+      {{ end }}
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="text">Speak to Cow:</label>
+    <textarea type="text" class="form-control" id="sea1"></textarea>
+  </div>
+  <a href="#jumb"><button type="submit" id="mo" class="btn btn-default">Submit</button></a>  
+  <noscript></form></noscript>
+</div>
+<script type="text/javascript" src="/toilet.js"></script>
+{{end}}

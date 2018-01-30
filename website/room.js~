@@ -1,0 +1,3 @@
+function addRooming(name,nbr,privates){
+    var a = "<div class=container-fluid>"
+    var end = "</div>"

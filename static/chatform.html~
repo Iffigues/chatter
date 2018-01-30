@@ -1,0 +1,25 @@
+{{define "search"}}
+  <div class="form-group">
+    <label for="email">ChatRoom Name:</label>
+    <input type="text" class="form-control" id="sea1">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password if Private:</label>
+    <input type="password" class="form-control" id="sea2">
+  </div>
+  <button class="btn btn-default" id="chatsearch">Submit</button>
+{{end}}
+
+{{define "join"}}
+    <div class="form-group">
+      <label for="text">name of chatroom:</label>
+      <input type="text" class="form-control" id="chatrr">
+    </div>
+    <button class="btn btn-default" id="sea3">Submit</button>
+    <div class="container-fluid" id="dock">
+    </div>
+{{end}}
+
+{{define "iframe"}}
+<iframe src="http://piko.gopiko.fr/" sandbox="allow-same-origin allow-scripts" scrolling="no" width="512px" height="512px" referrerPolicy="origin" id="piko" style="border:none;"></iframe>
+{{end}}

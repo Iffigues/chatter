@@ -1,0 +1,29 @@
+{{define "title"}}
+rig
+{{end}}
+{{define "body"}}
+<div class="container">
+  <div class="jumbotron" id="jumb">
+    <h1>have u adress?</h1>
+    <pre id="comment">{{println .Ar.Gg.Res}}</pre>
+  </div>
+  <div class="form-group">
+    <label for="sel2">Select list (select one):</label>
+    <select class="form-control" id="sel2">
+      <option></option>
+      {{range $index, $element := .Ar.Gender}}
+      <option>{{$element}}</option>
+      {{ end }}
+    </select>
+  </div>
+  {{range $i,$e := .Ar.Nbr}}
+	   <div class="form-group">
+	     <label for={{$e}}>{{$e}}</label>
+	     <input type="number" class="form-control" id={{$e}} name={{$e}}>
+	   </div>
+	   {{end}}
+	   <a href="#jumb"><button type="submit" id="mo" class="btn btn-default">Submit</button></a>
+	   
+</div>
+<script type="text/javascript" src="/rig.js"></script>
+{{end}}

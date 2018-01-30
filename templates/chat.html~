@@ -1,0 +1,64 @@
+﻿{{define "body"}}
+<div class="container-fluid" id="eee">
+<div class="row" id="rep" >
+  <div class="col-md-5" ><canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas></div>
+  <div class="col-md-7" >
+    <textarea class="form-control" rows="24" id="comment"></textarea>
+    <button type="button" class="btn btn-primary btn-block" id="demo">Plasmodier</button>
+  </div>
+</div>
+</div>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;		
+		var Module = {
+			arguments: ["-width","580","-height","540"],
+		};
+		Module.canvas = canvas;
+		var pico8_gpio = new Array(128); 	
+	</script>
+	<script async type="text/javascript" src="/static/stylesheets/final.js"></script>
+	<script async type="text/javascript" src="/static/stylesheets/queue.js"></script>
+	<script  async type="text/javascript">
+	  var apple = {
+	  conn : new WebSocket('ws://' + window.location.host + '/ws'),
+	  tab : true,
+	  send :  function(){
+	  this.text =document.getElementById("comment").value;
+	  document.getElementById("comment").value = "";
+	  if (this.text !=""){
+	   this.conn.send(this.text)
+	  }
+	  }
+}
+	  
+	  document.getElementById("demo").addEventListener("click", send);
+
+	  function send(){
+	  var text =document.getElementById("comment").value;
+	  document.getElementById("comment").value = "";
+	  if (text !=""){
+	  var msg ={
+	  texte: text
+	  }
+	  apple.conn.send(JSON.stringify(msg))
+	  }
+	  }
+
+	  apple.conn.onmessage = function(e) {
+	  obj= JSON.parse(e.data)
+	  if (typeof obj.Res !== "undefined"  && obj.R == 1){
+	  while(apple.tab == false){}
+	  writer(obj)
+	  console.log(obj)
+	  }
+	  
+	  function writer(obj){
+	  apple.tab = false
+	  apple.tab=true
+	  }
+	  }
+	</script>
+{{end}}
+

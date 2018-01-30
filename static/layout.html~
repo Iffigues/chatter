@@ -1,0 +1,133 @@
+{{define "layout"}}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Footer-with-button-logo.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108140519-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-108140519-1');
+    </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="google-site-verification" content="45r12Ew0pdue2nYz1iaClTJ8VZBpUykGSVeztV_U7mU" />
+    <meta name="referrer" content="origin">
+    <meta charset="utf-8">
+    <meta name="publisher" content="denoyelle">
+    <meta name="keywords"  content="chatroom,retro,pico-8,gopiko,fortune,cowsay,linux,fun,...">
+    <meta name="reply-to" content="iffigues@vivaldi.net">
+    <meta name="category" content="chatroom">
+    <meta name="distribution" content="global">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="identifier-url" content="http://gopiko.fr/">
+    <meta name="abstract" content="Chatroom retro">
+    <meta name="generator" content="pico-8, reactjs,golang">
+    <meta name="copyright" content="denoyelle boris">
+    <meta name="Description" content="chatroom retro pour les nostalgiques de l'apparition des chatrooms vener chatter en toue convivialité dans un cadre ancuen ">
+     <meta name="author" lang="fr" content="denoyelle boris">
+     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+     <link rel="stylesheet" type="text/css" href="/style.css">
+    <style>
+    body {
+    font-family: 'Sofia';font-size: 22px;
+    }
+    </style>
+    <title>Gopiko {{template "title"}}</title>
+  </head>
+  <body>
+    <header></header>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+	<div class="navbar-header">
+	  <a class="navbar-brand rose" id="1" href="/">Gopiko</a>
+	</div>
+	<ul class="nav navbar-nav navbar-left">
+	  <li class="rose" ><a href="/">Home</a></li>
+	  <li class="rose" id="2"><a href="/chat">ChatRoom</a></li>
+	  <li class="rose" id="2"><a href="/fortune">Fortune</a></li>
+	  <li class="rose" id="2"><a href="/cowsay">CowSay</a></li>
+	  <li class="rose" id="2"><a href="/toilet">Toilet</a></li>
+	  <li class="rose" id="2"><a href="/figlet">Figlet</a></li>
+	  <li class="rose" id="2"><a href="/rig">rig</a></li>
+	  <li class="rose" id="2"><a href="/calendar">calendar</a></li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+	  {{if eq  .IsCo false}}
+	  <li class="rose"><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	  <li class="rose"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	  {{else}}
+	  <li class="rose"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+	  {{end}}
+	</ul>
+      </div>
+    </nav>
+      {{template "body" .}}
+    <div id="zzz">
+    <footer id="myFooter">
+      <div class="container-fluid" id="fluid">
+	  <div class="row">
+	    <div class="col-sm-3">
+	      <h2 class="logo"><a href="#"> LOGO </a></h2>
+	    </div>
+	    <div class="col-sm-2">
+	      <h5>Get started</h5>
+	      <ul>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Sign up</a></li>
+		<li><a href="#">Downloads</a></li>
+	      </ul>
+	    </div>
+	    <div class="col-sm-2">
+	      <h5>About us</h5>
+	      <ul>
+		<li><a href="#">Company Information</a></li>
+		<li><a href="#">Contact us</a></li>
+		<li><a href="#">Reviews</a></li>
+	      </ul>
+	    </div>
+	    <div class="col-sm-2">
+	      <h5>Support</h5>
+	      <ul>
+		<li><a href="#">FAQ</a></li>
+		<li><a href="#">Help desk</a></li>
+		<li><a href="#">Forums</a></li>
+	      </ul>
+	    </div>
+	    <div class="col-sm-3">
+	      <div class="social-networks">
+		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+		<a href="https://www.facebook.com/Gopiko-544418209235769/" class="facebook"><i class="fa fa-facebook"></i></a>
+		<a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+	      </div>
+	      <button type="button" class="btn btn-default">Contact us</button>
+	    </div>
+	  </div>
+	</div>
+    </footer>
+    </div>
+      <script src="/demo.js"></script>
+      <script type="text/javascript" src="/html2canvas/dist/html2canvas.js"></script>
+      <!-- Hotjar Tracking Code for http://gopiko.fr -->
+      <script>
+	(function(h,o,t,j,a,r){
+	h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+	h._hjSettings={hjid:686602,hjsv:6};
+	a=o.getElementsByTagName('head')[0];
+	r=o.createElement('script');r.async=1;
+	r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+	a.appendChild(r);
+	})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      </script>
+      
+  </body>
+</html>
+{{end}}
