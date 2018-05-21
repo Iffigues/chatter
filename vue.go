@@ -4,8 +4,8 @@ import(
 	"html/template"
 	"path/filepath"
 	"net/http"
-
 )
+
 type Page struct {
 	Title string
 	Body  []byte
@@ -29,7 +29,6 @@ func jointure(r *http.Request,w http.ResponseWriter,are donne,ar ...string){
 
 	}
 	tmpl, _ := template.ParseFiles(joins...)
-	
 	tmpl.ExecuteTemplate(w, "layout", are)
 }
 

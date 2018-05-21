@@ -37,17 +37,41 @@ $("#chatcreate").on("click",function(){
 
 $("#sea3").on("click",function(){
     function  aa(){
-	alert("eee")
 	var obj = [];
 	obj.Search = ("#chatrr").value
 	return JSON.stringify(obj);
     }
+
+    function jsonroom(a){
+	console.log(a)
+	for (i = 0; i < a.length; i++){
+	    var div = document.createElement('div');
+	    div.className = "card"
+	    var body = document.createElement('div');
+	    body.className = "card-body"
+	    var p = document.createElement('p');
+	    var d = document.createElement('p');
+	    var f = document.createElement('p');
+	    
+	    p.innerHTML = a[i].name
+	    body.appendChild(p)
+	    d.innerHTML = a[i].private
+	    body.appendChild(d)
+	    f.innerHTML = a[i].number
+	    body.appendChild(f)
+	    
+	    div.appendChild(body)
+	    
+	    document.getElementById('dock').appendChild(div);
+	}
+    }
+    
     $.ajax({
 	url : 'http://gopiko.fr/room/search', // La ressource ciblée
 	type : 'POST' ,// Le type de la requête HTTP.
 	data :aa(),
 	success : function(code_html, statut){
-	    console.log(code_html)
+	    jsonroom(code_html)
 	},
 
 	error : function(resultat, statut, erreur){
@@ -58,8 +82,6 @@ $("#sea3").on("click",function(){
     });
 
 })
-
-
 
 
 $("#mo").click(function(){

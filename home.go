@@ -7,8 +7,7 @@ import (
 )
 
 func init(){
-	auth := Router.PathPrefix("/").Subrouter()
-	
+	auth := Router.PathPrefix("/").Subrouter()	
 	auth.Path("/").Methods("GET").HandlerFunc(home)
 	auth.Path("/logout").Methods("GET").HandlerFunc(DecoClient)
 	auth.Path("/login").Methods("GET","POST").HandlerFunc(CoClient)
@@ -26,6 +25,9 @@ func init(){
 	authes := Router.PathPrefix("/calendar").Subrouter()
 	authes.Path("/").Methods("GET","POST").HandlerFunc(cal)
 	authes.Path("/oauth").Methods("POST").HandlerFunc(NewCal)
+	upme := Router.PathPrefix("/up").Subrouter()
+	upme.Path("/").Methods("GET").HandlerFunc(uploads)
+	upme.Path("/t").Methods("POST").HandlerFunc(uploadth)
 }
 
 
